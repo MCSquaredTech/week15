@@ -1,0 +1,6 @@
+{
+  "company_addresses": [
+    
+    // Add more company names and addresses in zip code 83404 as needed
+  ]
+}
