@@ -1,6 +1,32 @@
 {
   "company_addresses": [
-    
+    {
+      "company_name": "ABC Corporation",
+      "address1": "123 Business Blvd",
+      "address2": "Suite 101",
+      "city": "Idaho Falls",
+      "state": "Idaho",
+      "zip": "83404",
+      "id": "1"
+    },
+    {
+      "company_name": "XYZ Industries",
+      "address1": "456 Corporate Avenue",
+      "address2": "",
+      "city": "Idaho Falls",
+      "state": "Idaho",
+      "zip": "83404",
+      "id": "2"
+    },
+    {
+      "company_name": "123 Enterprises",
+      "address1": "789 Commerce Drive",
+      "address2": "Building B, 3rd Floor",
+      "city": "Idaho Falls",
+      "state": "Idaho",
+      "zip": "83404",
+      "id": "3"
+    }
     // Add more company names and addresses in zip code 83404 as needed
   ]
 }
