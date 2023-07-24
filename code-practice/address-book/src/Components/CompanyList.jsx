@@ -14,14 +14,14 @@ const CompanyList = () => {
   }
 
   let company;
-    console.log(companies);
     if(companies.length > 0) { 
-      company = companies.map((company) => {
+      company = companies.sort((a, b) => { 
+        return (a.company_name > b.company_name ? 1 : -1);
+      }).map((company) => { 
         return <Company company={company} key={company.id} onClick={selectCompany} />
-      })
+      });
     } 
   
-
   useEffect(() => {
       console.log('useEffect');
       setCompanies(getCompany());

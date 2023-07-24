@@ -1,3 +1,5 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 .App {
   text-align: center;
 }
@@ -22,6 +24,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.company { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 200;
+  text-align: left;
+  justify-content: start;
 }
 
 .App-link {
