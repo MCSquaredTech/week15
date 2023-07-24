@@ -33,6 +33,18 @@
   justify-content: start;
 }
 
+.title { 
+  color: #fff;
+  background: #444;
+  height:      40px;  
+  line-height: 40px; /* Same as height  */
+  border: solid 1px black; 
+  background-color: lightgrey;
+  font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+  font-weight: "400"; 
+  text-align: "bottom";
+}
+
 .App-link {
   color: #61dafb;
 }

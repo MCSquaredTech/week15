@@ -10,7 +10,7 @@ const CompanyList = () => {
   }
 
   let selectCompany = (company) => { 
-
+    console.log(company.id);
   }
 
   let company;
@@ -23,8 +23,7 @@ const CompanyList = () => {
     } 
   
   useEffect(() => {
-      console.log('useEffect');
-      setCompanies(getCompany());
+      getCompany();
     }, []);
 
   return (

@@ -39,7 +39,7 @@ class AddressDataSourceAPI {
 
     postAddress  = async (address) => { 
         try{
-            const resp = await fetch(`${AddressDS}/company/${address.id}`, {
+            const resp = await fetch(`${AddressDS}`, {
                 method: "POST", 
                 headers: { 
                     "content-type": "application/json"
