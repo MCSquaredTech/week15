@@ -1,28 +1,45 @@
-import { GrAddCircle } from 'react-icons/gr';
 import '../App.css';
 
-const CompanyContainer = () => { 
+const CompanyContainer = ({companies=[]}) => { 
 
 
     return (
+        
         <>
-            {/* Compnay Name Container */}
-            <div className='card'> 
-                <div className='card-header companyheader'> 
-                    <p>Companies <button className="btn" style={{ position: 'absolute', bottom: '-2px', right: '1px' }}>
-                    < GrAddCircle 
-                        color="white"
-                        size="24px"
-                        title="add company" />
-                    </button></p>
+            {/* Compnay Sidebar Container */}
+            <div className="sidebar">
+                <h1>React Company List</h1>
+                <div>
+                    <form role="search" className="search-form">
+                        <input  
+                            id="q"
+                            aria-label="Search Companies"
+                            placeholder="Search" 
+                            name="q" 
+                        />
+                        <div 
+                            className="sr-only"
+                            aria-live="polite"
+                        ></div> 
+                    </form>
+                    <form method="post">
+                        <button type="submit">New</button>
+                    </form>
                 </div>
-                <div className='card-body companybody'>
-                    <div className='companyitems' style={{ position: 'absolute', bottom: '-2px', right: '1px' }}>
-                        <p>Brooks Intenet Software</p>
-                    </div>
-                </div>
+                <nav>
+                    <ul>
+                        <li>
+                        <a href={`/contacts/1`}>Brooks Internet Software</a>
+                        </li>
+                        <li>
+                        <a href={`/contacts/2`}>MC Squared Technologies</a>
+                        </li>
+                    </ul>
+                    </nav>
             </div>
+            <div className="detail"></div> 
         </>
+        
     )
 }
 
