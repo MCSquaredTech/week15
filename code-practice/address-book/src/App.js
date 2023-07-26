@@ -18,6 +18,7 @@ const titleStyle = {
 }
 
 function App() {
+  const [ deleteItem, setDeleteItem ] = useState(false);
   const [companies, setCompanies] = useState([]);
   const [ company, setCompany ]  = useState({
     company_name: '', 
@@ -43,17 +44,24 @@ function App() {
   }
 
   const handleSave = async (company) => { 
-      setCompany({});
       if(company.id === '') {
         await AddressDataSoureAPI.postAddress(company);
       } else { 
         await AddressDataSoureAPI.putAddressByID(company);
       }
+      setDeleteItem(false);
       getCompany();
   }
-
+  
+  const handleDelete = async (item) => { 
+    setCompany(item);
+    await AddressDataSoureAPI.deleteAddress(company);
+    getCompany();
+  }
   const handleSelect = (item) => {
     setCompany(item);
+    setDeleteItem(true);
+    console.log(company);
   }
 
   let getCompany = async () => { 
@@ -70,8 +78,14 @@ function App() {
           <div className='col-sm-2 title' >   
             <p>Company<button className='btn' 
                 style={buttonStyle}
-                onClick={newCompany}>new</button></p>
+                onClick={newCompany}>new</button>
+            <button className='btn'
+                style={buttonStyle}
+                disabled={!deleteItem}
+                onClick={handleDelete}>delete</button>         
+            </p>
           </div>
+          
           <div className='row'> 
             <div className='col-sm-3'> 
               <CompanyList companies={companies} onClick={handleSelect} />
