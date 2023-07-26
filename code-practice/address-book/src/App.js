@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { AddressDataSoureAPI } from './DataSourceAPI/address-datasource-api';
 import CompanyList from './Components/CompanyList';
@@ -18,17 +18,51 @@ const titleStyle = {
 }
 
 function App() {
+  const [companies, setCompanies] = useState([]);
+  const [ company, setCompany ]  = useState({
+    company_name: '', 
+    address1: '',
+    address2: '', 
+    city: '',
+    state: '',
+    zip: '',
+    id: ''
+  });
 
   // Fetch - Get all the company records 
-  const addCompany = () => { 
-    console.log('button clicked');
+  const newCompany = () => { 
+    setCompany({
+      company_name: '', 
+      address1: '',
+      address2: '', 
+      city: '',
+      state: '',
+      zip: '',
+      id: ''
+    });
   }
 
-  const handleSave = (company) => { 
-    console.log(company);
-    AddressDataSoureAPI.postAddress(company); 
+  const handleSave = async (company) => { 
+      setCompany({});
+      if(company.id === '') {
+        await AddressDataSoureAPI.postAddress(company);
+      } else { 
+        await AddressDataSoureAPI.putAddressByID(company);
+      }
+      getCompany();
   }
-  
+
+  const handleSelect = (item) => {
+    setCompany(item);
+  }
+
+  let getCompany = async () => { 
+    setCompanies(await AddressDataSoureAPI.getAddress());
+  }
+
+  useEffect(() => {
+      getCompany();
+  }, []);
 
   return (
     <div className="App">
@@ -36,14 +70,14 @@ function App() {
           <div className='col-sm-2 title' >   
             <p>Company<button className='btn' 
                 style={buttonStyle}
-                onClick={addCompany}><h3>+</h3></button></p>
+                onClick={newCompany}>new</button></p>
           </div>
           <div className='row'> 
             <div className='col-sm-3'> 
-              <CompanyList />
+              <CompanyList companies={companies} onClick={handleSelect} />
             </div>
             <div className='col-sm-4'> 
-              <CompanyForm onSave={handleSave} />
+              <CompanyForm company={company} key={company.id} onSave={handleSave} />
             </div>
           </div>
                

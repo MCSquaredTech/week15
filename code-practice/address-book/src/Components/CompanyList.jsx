@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { AddressDataSoureAPI } from '../DataSourceAPI/address-datasource-api.js';
+
 import Company from './Company';
 
-const CompanyList = () => {
-  const [companies, setCompanies] = useState([]);
-
-  let getCompany = async () => { 
-    setCompanies(await AddressDataSoureAPI.getAddress());
-  }
-
-  let selectCompany = (company) => { 
-    console.log(company.id);
+const CompanyList = ({companies =[], onClick}) => {
+  
+  const selectCompany = (company) => { 
+    onClick(company);
   }
 
   let company;
@@ -22,9 +16,7 @@ const CompanyList = () => {
       });
     } 
   
-  useEffect(() => {
-      getCompany();
-    }, []);
+
 
   return (
     <div>

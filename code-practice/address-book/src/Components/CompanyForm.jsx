@@ -2,14 +2,12 @@ import { useState } from 'react';
 
 
 
-const CompanyForm = ({onSave, customer=[]}) => {
-    const [ userData, setUserData ] = useState(customer); 
-
-    const { company_name, address1, address2, city, state, zip } = userData
+const CompanyForm = ({onSave, company={}}) => {
+    const [ userData, setUserData ] = useState(company); 
+    const { company_name, address1, address2, city, state, zip, id } = userData
     
     const handleChange = (event) => {         
         const { name, value } = event.target; 
-        console.log(name, value);
         setUserData((prevData) => ({...prevData, [name]: value})); 
     }
 

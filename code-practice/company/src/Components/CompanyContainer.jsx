@@ -1,7 +1,15 @@
+import { useState } from 'react'; 
 import '../App.css';
 
 const CompanyContainer = ({companies=[]}) => { 
+    const [ search, setSearch ] = useState('')
 
+    const handleEvent = (event) => { 
+        const { name, value } = event.target; 
+
+        setSearch((prevData) => ({...prevData, [name]: value}))
+        companies.filter(company => company.company_name === search)
+    } 
 
     return (
         
@@ -12,10 +20,11 @@ const CompanyContainer = ({companies=[]}) => {
                 <div>
                     <form role="search" className="search-form">
                         <input  
-                            id="q"
+                            id="search"
                             aria-label="Search Companies"
                             placeholder="Search" 
-                            name="q" 
+                            name="search" 
+                            onChange={handleEvent}
                         />
                         <div 
                             className="sr-only"
@@ -28,11 +37,9 @@ const CompanyContainer = ({companies=[]}) => {
                 </div>
                 <nav>
                     <ul>
+                        {}
                         <li>
-                        <a href={`/contacts/1`}>Brooks Internet Software</a>
-                        </li>
-                        <li>
-                        <a href={`/contacts/2`}>MC Squared Technologies</a>
+                            <a href={company.id}>company.company_name</a>
                         </li>
                     </ul>
                     </nav>
